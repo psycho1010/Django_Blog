@@ -1,27 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog Post</title>
-</head>
-<body>
-    <h1>Blog Post</h1>
+{% extends 'posts/base.html' %}
 
-    <!--Create NEw post button-->
-    <a href="{% url 'create_post' %}">Create New Post</a>
+{% block title %}Blog Posts{% endblock %}
 
-
-    <!-- Display Existing Posts-->
+{% block content %}
+    <h2>Blog Posts</h2>
     {% for post in posts %}
-        <div tyle="border: 1px solid #ccc; padding: 10px; margin: 10px;">
-            <h2>{{ post.title }}</h2>
-            <p>{{ post.content }}</p>
-            <small>Published on: {{ post.created_at }}</small>
-        </div>
-    {% empty %}
-        <p>No posts found.</p>
+        <h3>{{ post.title }}</h3>
+        <p>{{ post.content }}</p>
+        <a href="{% url 'edit_post' post.id %}">Edit</a> |
+        <a href="{% url 'delete_post' post.id %}">Delete</a>
+        <hr>
     {% endfor %}
-    
-</body>
-</html>
+{% endblock %}
