@@ -1,0 +1,13 @@
+# Virtual environment
+venv/
+
+# Database and migrations
+*.sqlite3
+__pycache__/
+*.pyc
+
+# Django secrets
+.env
+
+# IDE settings
+.vscode/
